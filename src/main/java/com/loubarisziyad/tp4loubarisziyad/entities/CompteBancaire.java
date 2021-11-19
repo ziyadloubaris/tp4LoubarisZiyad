@@ -22,12 +22,68 @@ public class CompteBancaire implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    public Long getId() {
-        return id;
+    private String nom;
+
+    private int solde;
+
+    public CompteBancaire() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public CompteBancaire(String nom, int solde) {  
+        this.nom = nom;  
+        this.solde = solde;  
+    }  
+
+    public void deposer(int montant) {  
+      solde += montant;  
+    }  
+
+    public void retirer(int montant) {  
+        if (montant < solde) {  
+            solde -= montant;  
+        } 
+        else {
+            solde = 0;
+        }  
+    }
+    /**
+     * Get the value of solde
+     *
+     * @return the value of solde
+     */
+    public int getSolde() {
+        return solde;
+    }
+
+    /**
+     * Set the value of solde
+     *
+     * @param solde new value of solde
+     */
+    public void setSolde(int solde) {
+        this.solde = solde;
+    }
+
+    /**
+     * Get the value of nom
+     *
+     * @return the value of nom
+     */
+    public String getNom() {
+        return nom;
+    }
+
+    /**
+     * Set the value of nom
+     *
+     * @param nom new value of nom
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override
