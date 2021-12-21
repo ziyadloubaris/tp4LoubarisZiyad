@@ -44,11 +44,12 @@ public class GestionnaireCompte {
      
        // Query query = em.createNamedQuery("Customer.findAll");
     
-        String s = "SELECT * FROM CompteBancaire";
+        String s = "SELECT c FROM CompteBancaire as c";
         TypedQuery<CompteBancaire> query = em.createQuery(s, CompteBancaire.class);
     
         return query.getResultList();
     }
+    
     public long nbCompte(){
          String s = "SELECT count(cp) FROM CompteBancaire cp";
         Query query = em.createQuery(s);
